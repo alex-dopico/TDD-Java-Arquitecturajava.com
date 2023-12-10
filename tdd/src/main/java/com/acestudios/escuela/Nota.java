@@ -1,5 +1,7 @@
 package com.acestudios.escuela;
 
+import java.util.Objects;
+
 public class Nota {
 	private String asignatura;
 	private double valor;
@@ -36,5 +38,23 @@ public class Nota {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(asignatura, valor);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Nota other = (Nota) obj;
+		return Objects.equals(asignatura, other.asignatura)
+				&& Double.doubleToLongBits(valor) == Double.doubleToLongBits(other.valor);
 	}
 }

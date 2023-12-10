@@ -43,4 +43,35 @@ class NotaTest {
 		
 		assertTrue(esMayor);
 	}
+	
+	@DisplayName("es igual la asignatura y la nota?")
+	@Test
+	public void testMismaAsignaturaNota() {
+		Nota nota1 = new Nota("Lengua", 8);
+		Nota nota2 = new Nota("Lengua", 7);
+		Nota nota3 = new Nota("Matemáticas", 8);
+		
+		boolean esMismaNota = nota1.esMismaAsignatura(nota2);
+		boolean esDistintaNota = nota1.esMismaAsignatura(nota3);
+		
+		assertTrue(esMismaNota);
+		assertFalse(esDistintaNota);
+	}
+	
+	@DisplayName("son dos nota exactamente iguales?")
+	@Test
+	public void testIgualdadNotas() {
+		// arrange
+		Nota nota1 = new Nota("Lengua", 8);
+		Nota nota2 = new Nota("Lengua", 8);
+		Nota nota3 = new Nota("Matemáticas", 8);
+		
+		// act
+		boolean iguales = nota1.equals(nota2);
+		boolean noIguales = nota1.equals(nota3);
+		
+		// assert
+		assertTrue(iguales);
+		assertFalse(noIguales);
+	}
 }
